@@ -17,9 +17,9 @@ def main():
     
     # Make results directory with timestamp
     timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-    if not os.path.exists('/results'):
+    if not os.path.exists('results/'):
         os.mkdir('results/')
-    os.mkdir(f'results/{timestamp}')
+    os.mkdir('results/' + timestamp)
 
     # Carry out median filtering
     for i in range(num_passes):
@@ -30,9 +30,9 @@ def main():
         mse, diff = compare_images(input_image, restored_image) # compare images to get mean square error and difference
 
         # Call the get results function with the required data
-        get_results(input_image, image_with_sp, restored_image, diff, mse, f'Pass {i+1}', f'results/{timestamp}/pass{i+1}.png')
+        get_results(input_image, image_with_sp, restored_image, diff, mse, 'Pass %d'%(i+1), 'results/' + timestamp + '/pass_%d.png'%(i+1))
 
-    cv2.imshow(f'Restored: Pass-{num_passes}', restored_image) # Display the final restored image
+    cv2.imshow('Restored: Pass-%d'%num_passes, restored_image) # Display the final restored image
     cv2.imshow('Difference', diff) # Display the difference between the original image and final restored image
 
     cv2.waitKey(0) # Press any key to terminate window

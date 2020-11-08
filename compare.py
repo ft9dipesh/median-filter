@@ -1,7 +1,7 @@
 import numpy as np
 
 def mean_square_error(image1, image2):
-    '''
+	'''
 	Returns:
 		(float) 'Mean Squared Error' between two images - the sum of the squared difference between the two images
 	Parameters:
@@ -14,7 +14,7 @@ def mean_square_error(image1, image2):
 
 
 def image_difference(image1, image2):
-    '''
+	'''
 	Returns:
 		(np.array(dtype: uint8)) Difference between two images
 	Parameters:
@@ -22,12 +22,12 @@ def image_difference(image1, image2):
 	'''
 	
 	difference = np.abs(np.subtract(image1, image2,dtype=np.float))
-    return difference.astype(np.uint8)
+	return difference.astype(np.uint8)
 
 
 def compare_images(image1, image2):
-    mse = mean_square_error(image1, image2) # Get the mean square error 
-    diff = image_difference(image1, image2) # Get the image difference
-    
-    return (mse, diff)
+	mse = mean_square_error(image1, image2) # Get the mean square error
+	diff = image_difference(image1, image2) # Get the image difference
+	
+	return (mse, diff)
 
